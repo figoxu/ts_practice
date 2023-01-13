@@ -1,2 +1,2 @@
-# ts_praticse
+# ts_practice
 type script praticse
