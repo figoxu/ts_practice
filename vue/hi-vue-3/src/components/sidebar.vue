@@ -56,6 +56,19 @@ import { useSidebarStore } from '../store/sidebar';
 import { useRoute } from 'vue-router';
 
 const items = [
+  {
+    icon: 'Odometer',
+    index: '101',
+    title: '练习',
+    permiss: '101',
+    subs: [
+      {
+        index: '/todolist',
+        title: 'todo列表',
+        permiss: '10101',
+      }
+    ],
+  },
     {
         icon: 'Odometer',
         index: '/dashboard',

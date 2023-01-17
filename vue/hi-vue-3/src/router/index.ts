@@ -13,6 +13,15 @@ const routes: RouteRecordRaw[] = [
         component: Home,
         children: [
             {
+                path: '/todolist',
+                name: 'todolist',
+                meta: {
+                    title: 'todo列表',
+                    permiss: '10101',
+                },
+                component: () => import(/* webpackChunkName: "dashboard" */ '../views/todolist/todolist.vue'),
+            },
+            {
                 path: '/dashboard',
                 name: 'dashboard',
                 meta: {
