@@ -22,6 +22,15 @@ const routes: RouteRecordRaw[] = [
                 component: () => import(/* webpackChunkName: "dashboard" */ '../views/todolist/todolist.vue'),
             },
             {
+                path: '/snake',
+                name: 'snake',
+                meta: {
+                    title: '贪吃蛇',
+                    permiss: '10102',
+                },
+                component: () => import(/* webpackChunkName: "dashboard" */ '../views/snake/snake.vue'),
+            },
+            {
                 path: '/dashboard',
                 name: 'dashboard',
                 meta: {

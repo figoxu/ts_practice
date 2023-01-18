@@ -66,6 +66,11 @@ const items = [
         index: '/todolist',
         title: 'todo列表',
         permiss: '10101',
+      },
+      {
+        index: '/snake',
+        title: '贪吃蛇',
+        permiss: '10102',
       }
     ],
   },
