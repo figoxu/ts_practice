@@ -3,6 +3,7 @@ import {Food} from "./Food";
 import {IsLive, Map} from "../types";
 import {render, reset} from "./render";
 import {addTicker, intervalTimer, stopTicker} from "../util";
+import {lg} from "../util/log"
 
 export class GameControl {
     snake: Snake;
@@ -18,8 +19,9 @@ export class GameControl {
     }
 
     start() {
+        lg("start run")
         document.addEventListener('keydown', this.keydownHandler.bind(this))
-        addTicker(this.keydownHandler.bind(this))
+        addTicker(this.handlerTicker.bind(this))
         this._isLive.value = 2
     }
 

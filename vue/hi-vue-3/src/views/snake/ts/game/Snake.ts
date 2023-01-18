@@ -17,12 +17,16 @@ export class Snake {
             y: 0,
             status: 2,
         }
-        this.bodies = []
+        this.bodies = [{
+            x: 0,
+            y: 0,
+            status: 1,
+        }]
     }
 
     checkEat(food: Food) {
         if (this.head.x === food.x && this.head.y === food.y) {
-            // food.change(this);
+            food.change(this);
             this.bodies.unshift({
                 x: food.x,
                 y: food.y,
@@ -32,7 +36,9 @@ export class Snake {
     }
 
     move(food: Food) {
-        if (hitFence(this.head, this.direction) || hitSelf(this.head, this.bodies)) {
+        let hitFenceFlag = hitFence(this.head, this.direction);
+        let hitSelfFlag = hitSelf(this.head, this.bodies);
+        if (hitFenceFlag || hitSelfFlag) {
             throw new Error("游戏结束")
         }
         const headX = this.head.x;
@@ -45,7 +51,7 @@ export class Snake {
                 if (headY - 1 === bodyY && headX === bodyX) {
                     moveDown(this.head, this.bodies)
                     this.direction = "Down"
-                    return
+                    break
                 }
                 moveUp(this.head, this.bodies)
                 break;
@@ -54,25 +60,25 @@ export class Snake {
                 if (headY + 1 === bodyY && headX === bodyX) {
                     moveUp(this.head, this.bodies)
                     this.direction = "Up"
-                    return
+                    break
                 }
                 moveDown(this.head, this.bodies)
                 break
             case "ArrowLeft":
             case "Left":
-                if (headX + 1 == bodyX && headY === bodyY) {
+                if (headY == bodyY && headX-1 === bodyX) {
                     moveRight(this.head, this.bodies)
                     this.direction = "Right"
-                    return
+                    break
                 }
                 moveLeft(this.head, this.bodies)
                 break
             case "ArrowRight":
             case "Right":
-                if (headX - 1 === bodyX && headY === bodyY) {
+                if (headY === bodyY && headX+1 === bodyX) {
                     moveLeft(this.head, this.bodies)
                     this.direction = "Left"
-                    return
+                    break
                 }
                 moveRight(this.head, this.bodies)
                 break

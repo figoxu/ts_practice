@@ -1,6 +1,7 @@
 import {randomIntegerInRange} from "../util"
 import {gameCol, gameRow} from './map'
 import {Snake} from "./Snake";
+import {lg} from "../util/log";
 
 export class Food {
     x: number;
@@ -25,8 +26,10 @@ export class Food {
         })
 
         if (isRepeatHead || isRepeatBody) {
+            lg("change food location-->")
             this.change(snake)
         } else {
+            lg("go food location","newX ",newX,"newY ",newY)
             this.x = newX
             this.y = newY
         }
