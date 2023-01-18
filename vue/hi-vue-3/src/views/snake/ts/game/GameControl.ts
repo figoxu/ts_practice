@@ -51,6 +51,6 @@ export class GameControl {
         this._food = new Food();
         this._isLive.value = 2;
         stopTicker();
-        addTicker(this.keydownHandler.bind(this))
+        addTicker(this.handlerTicker.bind(this))
     }
 }
