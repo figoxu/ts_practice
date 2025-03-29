@@ -17,8 +17,8 @@ import 'reactflow/dist/style.css';
 
 import { NodeSidebar } from './NodeSidebar';
 import { TaskNode } from './nodes/TaskNode';
-import { StartNode } from './nodes/StartNode';
-import { EndNode } from './nodes/EndNode';
+import { StartNode } from './nodes/StartNode.tsx';
+import { EndNode } from './nodes/EndNode.tsx';
 import { exportToBPMN } from './utils/bpmnExporter';
 
 // 定义节点类型
