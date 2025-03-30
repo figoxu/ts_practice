@@ -5,7 +5,7 @@ const todoRouter = Router();
 
 // 内存中存储todos
 let todos: Todo[] = [];
-let nextId = 1;
+let nextId: string = '1';
 
 // 获取所有todos
 todoRouter.get('/', async (req, res) => {
@@ -14,26 +14,28 @@ todoRouter.get('/', async (req, res) => {
 
 // 添加todo
 todoRouter.post('/', async (req, res) => {
-  const { title } = req.body;
+  const { title, description = '' } = req.body;
   const newTodo: Todo = {
-    id: nextId++,
+    id: nextId,
     title,
+    description,
     completed: false
   };
+  nextId = (parseInt(nextId) + 1).toString();
   todos.push(newTodo);
   res.status(201).json(newTodo);
 });
 
 // 删除todo
 todoRouter.delete('/:id', async (req, res) => {
-  const id = parseInt(req.params.id);
+  const id: string = req.params.id;
   todos = todos.filter(todo => todo.id !== id);
   res.status(204).send();
 });
 
 // 切换todo状态
 todoRouter.put('/:id/toggle', async (req, res) => {
-  const id = parseInt(req.params.id);
+  const id: string = req.params.id;
   const todo = todos.find(t => t.id === id);
   if (todo) {
     todo.completed = !todo.completed;
