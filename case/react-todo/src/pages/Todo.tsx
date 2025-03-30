@@ -1,35 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Todo.css';
-
-interface TodoItem {
-  id: number;
-  text: string;
-  completed: boolean;
-}
+import { TodoItem } from '../services/TodoStorage';
+import { TodoStorageFactory } from '../services/TodoStorageFactory';
 
 const Todo: React.FC = () => {
   const [todos, setTodos] = useState<TodoItem[]>([]);
   const [newTodo, setNewTodo] = useState<string>('');
+  const todoStorage = TodoStorageFactory.getInstance();
 
-  const handleAddTodo = () => {
+  useEffect(() => {
+    loadTodos();
+  }, []);
+
+  const loadTodos = async () => {
+    const loadedTodos = await todoStorage.getAll();
+    setTodos(loadedTodos);
+  };
+
+  const handleAddTodo = async () => {
     if (newTodo.trim() !== '') {
-      setTodos([
-        ...todos,
-        {
-          id: Date.now(),
-          text: newTodo.trim(),
-          completed: false,
-        },
-      ]);
+      const addedTodo = await todoStorage.add(newTodo);
+      setTodos([...todos, addedTodo]);
       setNewTodo('');
     }
   };
 
-  const handleDeleteTodo = (id: number) => {
+  const handleDeleteTodo = async (id: number) => {
+    await todoStorage.delete(id);
     setTodos(todos.filter(todo => todo.id !== id));
   };
 
-  const handleToggleTodo = (id: number) => {
+  const handleToggleTodo = async (id: number) => {
+    await todoStorage.toggle(id);
     setTodos(
       todos.map(todo =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
