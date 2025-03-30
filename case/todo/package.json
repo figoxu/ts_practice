@@ -1,0 +1,23 @@
+{
+  "name": "todo-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "yarn build:shared && concurrently \"yarn dev:client\" \"yarn dev:server\"",
+    "dev:client": "yarn workspace @todo/client dev",
+    "dev:server": "yarn workspace @todo/server dev",
+    "build": "yarn build:shared && yarn build:client && yarn build:server",
+    "build:client": "yarn workspace @todo/client build",
+    "build:server": "yarn workspace @todo/server build",
+    "build:shared": "yarn workspace @todo/shared build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1",
+    "typescript": "^4.9.5"
+  }
+} 
