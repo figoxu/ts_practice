@@ -1,10 +1,11 @@
-import { Todo, CreateTodoDTO } from '@todo/shared';
+import { Todo } from '../types/todo';
 
 export interface TodoStorage {
   getAll(): Promise<Todo[]>;
-  add(todo: CreateTodoDTO): Promise<Todo>;
-  delete(id: number): Promise<void>;
-  toggle(id: number): Promise<Todo>;
+  add(todo: Omit<Todo, 'id'>): Promise<Todo>;
+  update(todo: Todo): Promise<Todo>;
+  delete(id: string): Promise<void>;
+  toggle(id: string): Promise<Todo>;
 }
 
 export class ApiTodoStorage implements TodoStorage {
@@ -15,7 +16,7 @@ export class ApiTodoStorage implements TodoStorage {
     return response.json();
   }
 
-  async add(todo: CreateTodoDTO): Promise<Todo> {
+  async add(todo: Omit<Todo, 'id'>): Promise<Todo> {
     const response = await fetch(this.apiUrl, {
       method: 'POST',
       headers: {
@@ -26,13 +27,24 @@ export class ApiTodoStorage implements TodoStorage {
     return response.json();
   }
 
-  async delete(id: number): Promise<void> {
+  async update(todo: Todo): Promise<Todo> {
+    const response = await fetch(`${this.apiUrl}/${todo.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(todo),
+    });
+    return response.json();
+  }
+
+  async delete(id: string): Promise<void> {
     await fetch(`${this.apiUrl}/${id}`, {
       method: 'DELETE',
     });
   }
 
-  async toggle(id: number): Promise<Todo> {
+  async toggle(id: string): Promise<Todo> {
     const response = await fetch(`${this.apiUrl}/${id}/toggle`, {
       method: 'PUT',
     });
