@@ -11,7 +11,7 @@ import {
   Radio,
   Stack,
 } from '@chakra-ui/react';
-import { Todo } from '../types/todo';
+import { Todo } from '../../../shared/src/types';
 import { TodoItem } from './Todo';
 import { TodoStorageFactory, StorageType } from '../services/TodoStorageFactory';
 

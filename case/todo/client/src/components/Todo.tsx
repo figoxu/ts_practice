@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Checkbox, IconButton, Text, HStack } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
-import { Todo } from '../types/todo';
+import { Todo } from '../../../shared/src/types';
 
 interface TodoItemProps {
   todo: Todo;
