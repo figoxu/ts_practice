@@ -6,7 +6,7 @@ import { TodoStorageFactory } from '../services/TodoStorageFactory';
 const Todo: React.FC = () => {
   const [todos, setTodos] = useState<TodoItem[]>([]);
   const [newTodo, setNewTodo] = useState<string>('');
-  const todoStorage = TodoStorageFactory.getInstance();
+  const todoStorage = TodoStorageFactory.getInstance().getStorage('local');
 
   useEffect(() => {
     loadTodos();

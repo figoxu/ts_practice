@@ -7,10 +7,13 @@ const Navigation: React.FC = () => {
     <nav className="navigation">
       <ul>
         <li>
-          <Link to="/todo">Todo</Link>
+          <Link to="/todo">本地待办事项</Link>
         </li>
         <li>
-          <Link to="/about">About Us</Link>
+          <Link to="/todo-server">在线待办事项</Link>
+        </li>
+        <li>
+          <Link to="/about">关于我们</Link>
         </li>
       </ul>
     </nav>
