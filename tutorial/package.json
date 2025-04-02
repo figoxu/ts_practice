@@ -1,0 +1,31 @@
+{
+  "name": "typescript-practice",
+  "version": "1.0.0",
+  "description": "TypeScript实战教程示例代码",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "clean": "rimraf */dist"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.24",
+    "jest": "^29.7.0",
+    "rimraf": "^5.0.5",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3"
+  },
+  "workspaces": [
+    "00_data_pipeline",
+    "01_config_manager",
+    "02_event_bus",
+    "03_state_machine",
+    "04_validator",
+    "05_api_client",
+    "06_di_container",
+    "07_reactive_state",
+    "08_fluent_dsl",
+    "09_form_builder",
+    "10_mini_redux"
+  ]
+} 
