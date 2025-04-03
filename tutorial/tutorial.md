@@ -91,3 +91,63 @@
 4. 实现类似的自己的版本
 
 让我们开始动手实践吧！每个示例都是一个小型但完整的项目，通过实现这些项目，您将掌握 TypeScript 的核心特性和最佳实践。
+
+## TypeScript 命名规范
+
+### 文件命名规范
+1. **基本原则**
+   - 优先使用 `kebab-case`（推荐）：`my-component.ts`
+   - 或使用 `camelCase`：`myComponent.ts`
+   - 避免使用下划线 `_`
+   - 使用小写字母
+   - 使用描述性名称
+
+2. **特殊文件命名约定**
+   - 测试文件：`*.test.ts` 或 `*.spec.ts`
+   - 类型定义文件：`*.d.ts`
+   - 常量文件：`*.constants.ts`
+   - 工具函数：`*.utils.ts`
+   - 组件文件：`*.component.ts`
+   - 服务文件：`*.service.ts`
+
+3. **目录命名**
+   - 使用 `kebab-case`
+   - 使用小写字母
+   - 使用描述性名称
+   - 避免使用特殊字符
+
+### 代码命名规范
+1. **变量和函数**
+   - 使用 `camelCase`：`firstName`, `calculateTotal()`
+   - 使用描述性名称
+   - 布尔值前缀使用 `is`, `has`, `should` 等：`isValid`, `hasPermission`
+
+2. **类和接口**
+   - 使用 `PascalCase`：`UserService`, `DataModel`
+   - 接口名可以使用 `I` 前缀（可选）：`IUserService`
+   - 类型名使用 `PascalCase`：`UserType`, `ConfigOptions`
+
+3. **常量**
+   - 使用 `UPPER_SNAKE_CASE`：`MAX_COUNT`, `API_BASE_URL`
+   - 对象常量使用 `PascalCase`：`DefaultConfig`
+
+4. **枚举**
+   - 枚举名使用 `PascalCase`：`UserRole`, `HttpStatus`
+   - 枚举值使用 `PascalCase`：`UserRole.Admin`, `HttpStatus.NotFound`
+
+### 最佳实践
+1. **一致性原则**
+   - 在整个项目中保持一致的命名风格
+   - 遵循团队或项目已有的命名约定
+   - 使用 `.editorconfig` 和 `eslint` 强制执行规范
+
+2. **避免的做法**
+   - 混合使用不同的命名风格
+   - 使用无意义的名称（如 `a`, `b`, `foo`）
+   - 使用特殊字符（除了规定的连字符和下划线）
+   - 使用过于简短或难以理解的缩写
+
+3. **注释和文档**
+   - 使用 JSDoc 风格的注释
+   - 为公共 API 提供完整的类型注释
+   - 为复杂的类型定义添加说明性注释
