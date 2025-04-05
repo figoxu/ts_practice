@@ -1,2 +1,6 @@
 **/node_modules/
 **/dist
+/.idea/modules.xml
+/tutorial/package-lock.json
+/.idea/ts_practice.iml
+/.idea/vcs.xml
