@@ -1,4 +1,4 @@
-import { StringProcessor } from '../string_processor';
+import { StringProcessor } from '../string-processor';
 
 describe('StringProcessor', () => {
   // split 方法测试套件
