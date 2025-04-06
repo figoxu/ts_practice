@@ -23,8 +23,7 @@ export class EventBus<T extends EventMap> implements IEventBus<T> {
         
         const subscriber: Subscriber<T[K]> = {
             handler,
-            priority,
-            once: false
+            priority,            once: false
         };
         
         const subscribers = this.subscribers.get(event)!;
